@@ -28,7 +28,7 @@ export default function Card({
   if (!data) return null;
 
   /* ===============================
-     COST (UI ONLY)
+     COST
   =============================== */
 
   const buyCost = data.levels[0].cost;
@@ -43,11 +43,11 @@ export default function Card({
       : 0;
 
   /* ===============================
-     OWNERSHIP (FIXED)
+     OWNERSHIP
   =============================== */
 
   const isOwned = !!owner;
-  const isMine = isOwned && user && String(owner) === String(user._id);
+  const isMine = isOwned && String(owner) === String(user?._id);
   const ownedByOther = isOwned && !isMine;
 
   const maxLevel = level >= 3;
@@ -56,19 +56,37 @@ export default function Card({
   const canUpgrade = playerMana >= upgradeCost;
 
   /* ===============================
+     IMAGE LOGIC
+  =============================== */
+
+  const currentLevelIndex = level > 0 ? level - 1 : 0;
+
+  const displayImage =
+    data.levels[currentLevelIndex]?.image ||
+    data.levels[0]?.image;
+
+  const nextImage =
+    data.levels[level]?.image || null;
+
+  /* ===============================
      CLAW EFFECT
   =============================== */
 
   useEffect(() => {
 
     if (ownedByOther) {
-
       setShowClaw(true);
       setShowCard(false);
 
       const timer = setTimeout(() => {
         setShowClaw(false);
         setShowCard(true);
+
+        /* 🔥 AUTO CLOSE AFTER RENT */
+        setTimeout(() => {
+          onSkip && onSkip();
+        }, 1000);
+
       }, 1200);
 
       return () => clearTimeout(timer);
@@ -80,13 +98,14 @@ export default function Card({
   }, [ownedByOther]);
 
   /* ===============================
-     SOCKET RESPONSE LISTENER
+     SOCKET UPDATE
   =============================== */
 
   useEffect(() => {
 
     const handleUpdate = () => {
       setLoading(false);
+      onSkip && onSkip(); // 🔥 CLOSE AFTER ACTION
     };
 
     socket.on("tile_update", handleUpdate);
@@ -98,64 +117,53 @@ export default function Card({
   }, [socket]);
 
   /* ===============================
-     BUY (FIXED)
+     BUY
   =============================== */
 
   const handleBuy = () => {
 
     if (!user || loading) return;
 
-    if (!canBuy) {
-      alert("Not enough mana");
-      return;
-    }
+    if (!canBuy) return;
 
     setLoading(true);
 
     socket.emit("buy_tile", {
       roomId,
       userId: user._id,
-      position // ❌ no cost sent
+      position
     });
 
-    // ❌ DO NOT close immediately
   };
 
   /* ===============================
-     UPGRADE (FIXED)
+     UPGRADE
   =============================== */
 
   const handleUpgrade = () => {
 
     if (!user || loading) return;
 
-    if (!canUpgrade) {
-      alert("Not enough mana");
-      return;
-    }
+    if (!canUpgrade) return;
 
     setLoading(true);
 
     socket.emit("upgrade_tile", {
       roomId,
       userId: user._id,
-      position // ❌ no cost
+      position
     });
 
   };
 
   /* ===============================
-     CLAW OVERLAY
+     CLAW UI
   =============================== */
 
   if (showClaw) {
     return (
       <div className="claw-overlay">
-        <img
-          src={clawImg}
-          alt="claw"
-          className="claw-image"
-        />
+        <img src={clawImg} alt="claw" className="claw-image" />
       </div>
     );
   }
@@ -170,80 +178,84 @@ export default function Card({
 
     <div className="card">
 
+      {/* IMAGE */}
       <div className="card-image">
-        {tile?.image ? (
-          <img src={tile.image} alt={tile.label} />
+        {displayImage ? (
+          <img src={displayImage} alt={tile.label} />
         ) : (
-          <div className="card-placeholder">
-            {tile.label}
-          </div>
+          <div className="card-placeholder">{tile.label}</div>
         )}
       </div>
 
-      <div className="card-title">
-        {tile.label}
-      </div>
+      <div className="card-title">{tile.label}</div>
 
       {isOwned && (
-        <div className="card-level">
-          Level {level}
-        </div>
+        <div className="card-level">Level {level}</div>
       )}
 
       {/* NOT OWNED */}
       {!isOwned && (
-
         <div className="card-actions">
 
           <div className="card-cost">
             Tame Cost: {buyCost}
           </div>
 
+          {!canBuy && (
+            <div className="card-warning">
+              ❌ Not enough mana
+            </div>
+          )}
+
           <button
             className="card-btn tame"
             onClick={handleBuy}
             disabled={!canBuy || loading}
           >
-            {loading ? "Processing..." : "Tame Creature"}
+            {loading ? "Processing..." : "Tame"}
           </button>
 
           <button
             className="card-btn skip"
             onClick={onSkip}
-            disabled={loading}
           >
             Skip
           </button>
 
         </div>
-
       )}
 
       {/* OWNED BY OTHER */}
       {ownedByOther && (
-
         <div className="card-actions">
 
           <div className="card-penalty">
-            Pay Mana: {penalty}
+            💀 Paid Mana: {penalty}
           </div>
 
-          <button className="card-btn skip" onClick={onSkip}>
-            Continue
-          </button>
-
         </div>
-
       )}
 
       {/* OWNED BY YOU */}
       {isMine && !maxLevel && (
-
         <div className="card-actions">
+
+          {nextImage && (
+            <div className="card-upgrade-preview">
+              <img src={nextImage} alt="next" />
+              <span>Next Form</span>
+            </div>
+          )}
 
           <div className="card-upgrade-cost">
             Upgrade: {upgradeCost}
           </div>
+
+          {!canUpgrade && (
+            <div className="card-warning">
+              ❌ Not enough mana
+            </div>
+          )}
 
           <button
             className="card-btn upgrade"
@@ -256,34 +268,31 @@ export default function Card({
           <button
             className="card-btn skip"
             onClick={onSkip}
-            disabled={loading}
           >
             Skip
           </button>
 
         </div>
-
       )}
 
-      {/* MAX */}
+      {/* MAX LEVEL */}
       {isMine && maxLevel && (
-
         <div className="card-actions">
 
           <div className="card-max">
-            Max Level
+            ⭐ Max Level
           </div>
 
-          <button className="card-btn skip" onClick={onSkip}>
+          <button
+            className="card-btn skip"
+            onClick={onSkip}
+          >
             Continue
           </button>
 
         </div>
-
       )}
 
     </div>
-
   );
-
 }

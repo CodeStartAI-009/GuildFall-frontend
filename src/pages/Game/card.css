@@ -91,3 +91,23 @@
       transform: translateY(0) scale(1);
     }
   }
+  .card-warning {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  
+  .card-upgrade-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .card-upgrade-preview img {
+    width: 70px;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid gold;
+  }
