@@ -287,12 +287,7 @@
     border-radius: 10px;
     overflow: hidden;
   }
-  
-  /* 🔥 SCROLLABLE */
-  .scrollable {
-    max-height: 300px;
-    overflow-y: auto;
-  }
+   
   
   /* HEADER */
   .leaderboard-header {
@@ -331,4 +326,18 @@
   /* YOUR RANK BOX */
   .leaderboard-my-rank {
     margin-top: 10px;
+  }
+  .scrollable {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  /* smooth scroll */
+  .scrollable::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 4px;
   }
