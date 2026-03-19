@@ -1,7 +1,7 @@
  /* Root */
 .lobby-root {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #1b1f2e, #0a0c12 70%);
+  background-image:url("../../assets/game/lobby.png");
   position: fixed;
   inset: 0;
   overflow: hidden;
