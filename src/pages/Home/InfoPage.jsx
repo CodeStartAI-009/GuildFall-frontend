@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import "./InfoPage.css";
+import "./Infopage.css";
 
 export default function InfoPage() {
   const { type } = useParams();
