@@ -1,0 +1,693 @@
+/* =====================================================
+   GUILDFALL HOME — FINAL PRODUCTION VERSION
+===================================================== */
+
+.home-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  color: #f5e6c8;
+  font-family: "Cinzel", serif;
+
+  background:
+    radial-gradient(ellipse at center,
+      rgba(0,0,0,0) 30%,
+      rgba(0,0,0,0.45) 60%,
+      rgba(0,0,0,0.85) 100%
+    ),
+    radial-gradient(circle at 50% 20%,
+      rgba(140,120,255,0.35),
+      rgba(60,40,120,0.8),
+      #2c1b5f
+    );
+}
+
+/* =====================================================
+   ARENA GRID
+===================================================== */
+
+.home-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(140,175,255,0.25) 0px,
+      rgba(140,175,255,0.25) 100px,
+      rgba(70,110,200,0.25) 100px,
+      rgba(70,110,200,0.25) 200px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(140,175,255,0.25) 0px,
+      rgba(140,175,255,0.25) 100px,
+      rgba(70,110,200,0.25) 100px,
+      rgba(70,110,200,0.25) 200px
+    );
+
+  mask-image: radial-gradient(
+    ellipse at center,
+    black 0%,
+    black 38%,
+    rgba(0,0,0,0.6) 55%,
+    transparent 70%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 0%,
+    black 38%,
+    rgba(0,0,0,0.6) 55%,
+    transparent 70%
+  );
+}
+
+/* =====================================================
+   CENTER GLOW
+===================================================== */
+
+.home-root::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.15) 0%,
+    rgba(255,255,255,0.06) 22%,
+    rgba(255,255,255,0.02) 45%,
+    transparent 65%
+  );
+}
+
+/* =====================================================
+   SIGN ICON (TOP RIGHT)
+===================================================== */
+
+.top-right {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  z-index: 10;
+}
+
+.sign-icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #d4af37;
+  background: linear-gradient(180deg, #3a2b5f, #1a1230);
+  color: #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 0 8px rgba(212,175,55,0.4),
+    0 0 18px rgba(212,175,55,0.5);
+
+  transition: 0.25s ease;
+}
+
+.sign-icon-btn:hover {
+  transform: scale(1.12);
+  box-shadow:
+    inset 0 0 12px rgba(212,175,55,0.6),
+    0 0 28px rgba(212,175,55,0.9);
+}
+
+/* =====================================================
+   POPUP
+===================================================== */
+
+.mana-popup {
+  position: absolute;
+  top: 78px;
+  right: 28px;
+  background: rgba(20,15,35,0.95);
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid #7c5cff;
+  font-size: 13px;
+  box-shadow: 0 0 18px rgba(124,92,255,0.6);
+  animation: popupFade 4s ease forwards;
+}
+
+@keyframes popupFade {
+  0% { opacity: 0; transform: translateY(-10px); }
+  12% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* =====================================================
+   CENTER CONTENT
+===================================================== */
+
+.center-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+}
+
+/* GAME LOGO */
+
+.game-logo {
+  margin-bottom: 55px;
+}
+
+.game-logo img {
+  width: 420px;
+  max-width: 75vw;
+  filter: drop-shadow(0 0 25px rgba(124,92,255,0.7));
+}
+
+/* =====================================================
+   PLAY SECTION
+===================================================== */
+
+.bottom-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+/* PLAY BUTTON */
+
+.royal-play-btn {
+  padding: 22px 80px;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  border-radius: 26px;
+  border: 2px solid #d4af37;
+
+  background: linear-gradient(180deg, #4a2c82, #1c1035);
+  color: #f5e6c8;
+
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.3),
+    0 12px 0 #2a1450,
+    0 25px 40px rgba(0,0,0,0.55);
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.royal-play-btn:active {
+  transform: translateY(6px);
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.3),
+    0 6px 0 #2a1450;
+}
+
+/* SUB BUTTONS */
+
+.royal-secondary {
+  display: flex;
+  gap: 26px;
+}
+
+.royal-small-btn {
+  padding: 13px 32px;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 16px;
+  border: 1px solid #d4af37;
+
+  background: linear-gradient(180deg, #35205e, #120a25);
+  color: #f5e6c8;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.25),
+    0 6px 0 #1c1035,
+    0 14px 20px rgba(0,0,0,0.5);
+
+  cursor: pointer;
+}
+
+.royal-small-btn:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.25),
+    0 3px 0 #1c1035;
+}
+
+/* =====================================================
+   RIGHT SIDE AD
+===================================================== */
+
+.home-side-ad {
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 160px;
+  height: 600px;
+  z-index: 2;
+}
+
+/* =====================================================
+   POLICY LINKS
+===================================================== */
+
+.policy-content {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.policy-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 13px;
+}
+
+.policy-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: underline;
+}
+
+.policy-links a:hover {
+  color: #ffffff;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.home-footer {
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.footer-icons {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* Footer Buttons */
+
+.footer-icons button {
+  background: linear-gradient(180deg, #35205e, #120a25);
+  border: 1px solid #d4af37;
+  border-radius: 14px;
+
+  padding: 12px;
+  color: #f5e6c8;
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.25),
+    0 6px 0 #1c1035,
+    0 14px 18px rgba(0,0,0,0.5);
+
+  transition: all 0.18s ease;
+}
+
+/* Hover = subtle magical glow */
+.footer-icons button:hover {
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.35),
+    0 6px 0 #1c1035,
+    0 18px 26px rgba(124,92,255,0.6);
+}
+
+/* Pressed effect */
+.footer-icons button:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.25),
+    0 3px 0 #1c1035;
+}
+
+.footer-icons svg {
+  color: white;
+  font-size: 16px;
+}
+
+/* SMALL COMPANY LOGO */
+
+.footer-icons img {
+  width: 42px;   /* 🔥 smaller logo */
+  height: 42px;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow:
+    0 6px 10px rgba(0,0,0,0.35);
+}
+/* =====================================================
+   PLAY MODAL — CINEMATIC VERSION
+===================================================== */
+
+.play-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 5, 20, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.25s ease;
+}
+
+/* ================= MODAL CORE ================= */
+
+.play-modal {
+  position: relative;
+  padding: 50px 60px;
+  border-radius: 28px;
+  text-align: center;
+
+  background: linear-gradient(180deg, #2a174a, #120a25);
+  border: 2px solid #d4af37;
+
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.25),
+    0 25px 60px rgba(0,0,0,0.75),
+    0 0 60px rgba(124,92,255,0.45);
+
+  animation: scaleIn 0.25s cubic-bezier(.2,.8,.2,1);
+  overflow: hidden;
+}
+
+/* ================= INNER GLOW FRAME ================= */
+
+.play-modal::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 22px;
+  border: 1px solid rgba(212,175,55,0.35);
+  pointer-events: none;
+}
+
+/* ================= ARCANE PULSE ================= */
+
+.play-modal::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 30px;
+  background: radial-gradient(
+    circle at center,
+    rgba(124,92,255,0.25),
+    transparent 70%
+  );
+  animation: magicalPulse 3s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* ================= TITLE ================= */
+
+.play-modal h2 {
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-weight: 900;
+  color: #f5e6c8;
+  margin-bottom: 6px;
+  text-shadow: 0 0 12px rgba(212,175,55,0.6);
+}
+
+/* ================= BUTTONS ================= */
+
+.modal-btn {
+  width: 240px;
+  padding: 14px 0;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 18px;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes magicalPulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.4; }
+}
+/* ================= BACK BUTTON INSIDE MODAL ================= */
+
+.modal-back-btn {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #d4af37;
+
+  background: linear-gradient(180deg, #35205e, #120a25);
+  color: #f5e6c8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.25),
+    0 6px 0 #1c1035,
+    0 12px 18px rgba(0,0,0,0.5);
+
+  transition: all 0.18s ease;
+}
+
+.modal-back-btn:hover {
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.35),
+    0 6px 0 #1c1035,
+    0 16px 24px rgba(124,92,255,0.6);
+}
+
+.modal-back-btn:active {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.25),
+    0 3px 0 #1c1035;
+}
+.player-select {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.active-btn {
+  background: gold !important;
+  color: black !important;
+}
+
+.create-final-btn {
+  margin-top: 15px;
+}
+.join-input {
+  width: 100%;
+  padding: 12px;
+  margin: 20px 0;
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+/* ---------------- LEVEL SECTION ---------------- */
+.level-section {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: linear-gradient(180deg, #2a1f4a, #1a1035);
+  padding: 12px 16px;
+
+  border-radius: 18px;
+  border: 2px solid #d4af37;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.1),
+    0 6px 18px rgba(0,0,0,0.6);
+
+  z-index: 10;
+}
+
+/* LEVEL BADGE */
+.level-badge {
+  background: linear-gradient(180deg, #ffd700, #b8962e);
+  color: #1a1035;
+
+  padding: 6px 14px;
+  border-radius: 14px;
+
+  font-weight: 900;
+  font-size: 14px;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.5),
+    0 3px 8px rgba(0,0,0,0.5);
+}
+
+/* XP WRAPPER */
+.xp-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* XP BAR */
+.xp-bar {
+  width: 160px;
+  height: 12px;
+
+  background: #0f0825;
+  border-radius: 8px;
+  overflow: hidden;
+
+  border: 1px solid #3a2a6a;
+
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* XP FILL */
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00e5ff, #00bcd4);
+
+  transition: width 0.4s ease;
+
+  box-shadow:
+    0 0 10px rgba(0,229,255,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* XP TEXT */
+.xp-text {
+  font-size: 11px;
+  color: #d4af37;
+  opacity: 0.9;
+}
+
+/* ---------------- LEFT PANEL ---------------- */
+.left-panel {
+  position: absolute;
+  top: 110px;
+  left: 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  z-index: 10;
+}
+
+/* ECONOMY BOX */
+.economy-box {
+  background: linear-gradient(180deg, #2a1f4a, #1a1035);
+
+  padding: 14px;
+  border-radius: 18px;
+
+  border: 2px solid #d4af37;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.08),
+    0 10px 25px rgba(0,0,0,0.7);
+}
+
+/* CURRENCY ITEM */
+.currency {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: linear-gradient(180deg, #3a2a6a, #24154a);
+
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  border: 1px solid #d4af37;
+
+  font-weight: 900;
+  font-size: 14px;
+  color: #fff;
+
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.15),
+    0 6px 12px rgba(0,0,0,0.6);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.currency:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 12px rgba(212,175,55,0.7),
+    0 6px 16px rgba(0,0,0,0.7);
+}
+
+/* ICON IMAGE */
+.currency img {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 600px) {
+
+  .level-section {
+    transform: scale(0.85);
+    left: 8px;
+    top: 8px;
+  }
+
+  .left-panel {
+    transform: scale(0.85);
+    left: 8px;
+    top: 90px;
+  }
+
+}

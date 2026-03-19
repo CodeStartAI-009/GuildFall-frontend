@@ -1,0 +1,101 @@
+.loot-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    background: rgba(0,0,0,0.85);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    z-index: 9999;
+  }
+  
+  .loot-modal {
+    background: linear-gradient(180deg,#1a1035,#0c0818);
+    border: 2px solid gold;
+    border-radius: 12px;
+    padding: 20px;
+  
+    width: 420px;
+    text-align: center;
+  }
+  
+  .loot-title {
+    color: gold;
+    margin-bottom: 15px;
+  }
+  
+  /* CARDS */
+  
+  .loot-cards {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .loot-card {
+    width: 110px;
+    height: 150px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  
+  /* INNER FLIP */
+  
+  .loot-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .loot-card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+  
+  /* FRONT (CARD BACK DESIGN) */
+  
+  .loot-card-front,
+  .loot-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  
+    border-radius: 10px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    backface-visibility: hidden;
+  }
+  
+  /* BACK SIDE LOOK */
+  
+  .loot-card-front {
+    background: linear-gradient(180deg,#2a174a,#120a25);
+    border: 1px solid gold;
+    font-size: 30px;
+    color: gold;
+  }
+  
+  /* REVEALED CARD */
+  
+  .loot-card-back {
+    background: linear-gradient(180deg,#3a1c6b,#1b0b33);
+    border: 1px solid gold;
+    transform: rotateY(180deg);
+    padding: 10px;
+  }
+  
+  .loot-card-text {
+    font-size: 12px;
+    color: white;
+    text-align: center;
+  }

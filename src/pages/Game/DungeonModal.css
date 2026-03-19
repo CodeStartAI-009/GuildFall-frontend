@@ -1,0 +1,99 @@
+/* ===============================
+   OVERLAY (BACKGROUND DARK)
+=============================== */
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    width: 320px;
+    padding: 20px;
+  
+    background: linear-gradient(180deg, #1a1035, #0c0818);
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+  
+    box-shadow:
+      0 0 25px rgba(212, 175, 55, 0.6),
+      inset 0 0 20px rgba(0, 0, 0, 0.8);
+  
+    text-align: center;
+    color: #f5e6c8;
+  
+    z-index: 100;
+  }
+  
+  /* ===============================
+     TITLE
+  =============================== */
+  
+  .modal h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #ffd700;
+  }
+  
+  /* ===============================
+     DESCRIPTION
+  =============================== */
+  
+  .modal p {
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #ddd;
+  }
+  
+  /* ===============================
+     BUTTONS
+  =============================== */
+  
+  .modal button {
+    width: 100%;
+    margin: 6px 0;
+    padding: 10px;
+  
+    background: linear-gradient(180deg, #2a174a, #120a25);
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+  
+    color: #f5e6c8;
+    font-weight: bold;
+    font-size: 13px;
+  
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  /* HOVER EFFECT */
+  .modal button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, #3c2a8c, #1c1444);
+    box-shadow: 0 0 10px rgba(124, 92, 255, 0.6);
+  }
+  
+  /* CLICK EFFECT */
+  .modal button:active {
+    transform: scale(0.96);
+  }
+  
+  /* ===============================
+     OPTIONAL BACKDROP
+  =============================== */
+  
+  .modal::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+  }
+  .jail-free-btn {
+    background: linear-gradient(180deg, #ffd700, #b8860b);
+    color: black;
+    font-weight: bold;
+  }

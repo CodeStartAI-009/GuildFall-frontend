@@ -1,0 +1,438 @@
+ /* ===============================
+GLOBAL RESET
+=============================== */
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ===============================
+MAIN GAME ROOT
+=============================== */
+
+.game-root{
+
+  position:fixed;
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+
+  background-image:url("../../assets/game/table.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  color:white;
+
+}
+
+/* subtle dark vignette for readability */
+
+.game-root::before{
+
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+  radial-gradient(circle at center,
+  rgba(0,0,0,0.2),
+  rgba(0,0,0,0.6));
+
+  pointer-events:none;
+}
+
+/* ===============================
+HEADER
+=============================== */
+
+.game-header{
+
+  text-align:center;
+
+  padding:14px;
+
+  font-size:20px;
+  font-weight:600;
+
+  backdrop-filter:blur(6px);
+
+}
+
+/* ===============================
+PLAYERS BAR
+=============================== */
+
+.game-players{
+
+  display:flex;
+  justify-content:center;
+  gap:12px;
+
+  padding:10px;
+
+}
+
+/* player cards */
+
+.player-card{
+
+  padding:6px 14px;
+
+  background:rgba(20,25,35,.9);
+
+  border-radius:8px;
+
+  font-size:14px;
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
+
+}
+
+/* current player highlight */
+
+.player-card.me{
+
+  background:linear-gradient(
+  135deg,
+  #2c7be5,
+  #4da3ff
+  );
+
+  box-shadow:0 0 10px rgba(44,123,229,.6);
+
+}
+
+/* ===============================
+GAME AREA
+=============================== */
+
+.game-area{
+
+  flex:1;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  position:relative;
+
+}
+
+/* ===============================
+BOARD AREA
+=============================== */
+
+.game-board-area{
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+}
+
+/* ===============================
+MAIN BOARD
+=============================== */
+
+.game-board{
+
+  width:min(720px,85vw);
+  height:min(720px,85vw);
+
+  display:grid;
+
+  grid-template-columns:repeat(11,1fr);
+  grid-template-rows:repeat(11,1fr);
+
+  background:rgba(0,0,0,.55);
+
+  backdrop-filter:blur(5px);
+
+  border-radius:14px;
+
+  border:3px solid rgba(212,175,55,.6);
+
+  box-shadow:
+
+  0 0 25px rgba(0,0,0,.7),
+  inset 0 0 20px rgba(0,0,0,.8),
+  0 0 30px rgba(212,175,55,.25);
+
+}
+
+/* ===============================
+BOARD TILES
+=============================== */
+
+.board-tile{
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:6px;
+
+  font-size:12px;
+
+  text-align:center;
+
+  background:#1e2230;
+
+  border:1px solid rgba(255,255,255,.06);
+
+  transition:all .15s ease;
+
+}
+
+/* tile hover */
+
+.board-tile:hover{
+
+  transform:translateY(-2px);
+
+  background:#2a2f42;
+
+  box-shadow:
+  0 4px 10px rgba(0,0,0,.6),
+  inset 0 0 8px rgba(255,255,255,.05);
+
+}
+
+/* ===============================
+CENTER AREA
+=============================== */
+
+.board-center{
+
+  background:transparent;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+}
+
+/* ===============================
+WAITING SCREEN
+=============================== */
+
+.waiting-screen{
+
+  font-size:18px;
+
+  opacity:.75;
+
+}
+
+/* ===============================
+FOOTER
+=============================== */
+
+.game-footer{
+
+  padding:14px;
+
+  text-align:center;
+
+}
+
+/* ===============================
+LEAVE BUTTON
+=============================== */
+
+.leave-btn{
+
+  padding:10px 22px;
+
+  background:#ff4d4d;
+
+  border:none;
+
+  border-radius:8px;
+
+  color:white;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.2s;
+
+}
+
+.leave-btn:hover{
+
+  background:#ff2b2b;
+
+  transform:translateY(-1px);
+
+  box-shadow:0 4px 12px rgba(0,0,0,.6);
+
+}
+/* ===============================
+   PLAYER STATS PANEL
+=============================== */
+
+.player-stats{
+  position:absolute;
+  top:20px;
+  left:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:5;
+}
+
+.player-stat{
+  background:rgba(0,0,0,0.7);
+  padding:10px 14px;
+  border-radius:8px;
+  color:white;
+  font-size:14px;
+  min-width:150px;
+}
+
+.player-name{
+  font-weight:bold;
+}
+
+.player-mana{
+  color:#4da6ff;
+}
+
+/* highlight current turn */
+
+.player-stat.active{
+  border:2px solid #ffd700;
+}
+.cards-icon{
+  margin-left:8px;
+  cursor:pointer;
+  font-size:18px;
+}
+/* ===============================
+   MANA CHANGE POP EFFECT
+=============================== */
+
+.mana-change {
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 700;
+
+  position: relative;
+  display: inline-block;
+
+  animation: manaFloat 1.5s ease forwards;
+
+  text-shadow: 0 0 6px rgba(255,255,255,0.2);
+}
+
+/* POSITIVE (GAIN) */
+.mana-change.plus {
+  color: #00ffb3;
+
+  text-shadow:
+    0 0 6px rgba(0,255,179,0.8),
+    0 0 12px rgba(0,255,179,0.6);
+}
+
+/* NEGATIVE (LOSS) */
+.mana-change.minus {
+  color: #ff4d4d;
+
+  text-shadow:
+    0 0 6px rgba(255,77,77,0.8),
+    0 0 12px rgba(255,77,77,0.6);
+}
+
+/* ===============================
+   FLOAT ANIMATION
+=============================== */
+
+@keyframes manaFloat {
+
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.9);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.05);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.95);
+  }
+}
+.convert-box {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+
+  background: linear-gradient(180deg, #1a1035, #0c0818);
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+
+  padding: 10px 14px;
+  color: #f5e6c8;
+
+  box-shadow: 0 0 10px rgba(212,175,55,0.4);
+}
+
+.convert-title {
+  font-weight: bold;
+  color: #ffd700;
+  margin-bottom: 6px;
+}
+
+.convert-info {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.convert-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.convert-controls input {
+  width: 60px;
+  padding: 4px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.convert-controls button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  background: #d4af37;
+  color: black;
+  cursor: pointer;
+}
+
+.convert-controls button:hover {
+  background: #ffd700;
+}

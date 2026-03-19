@@ -1,0 +1,40 @@
+.mycards-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 250px;
+  background: #111;
+  
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+.mycards-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.mycards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.mycard {
+  background: #1c1c1c;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.mycard-title {
+  font-weight: bold;
+}
+
+.mycard-image img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+}

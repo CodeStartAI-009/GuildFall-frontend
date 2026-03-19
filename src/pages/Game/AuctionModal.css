@@ -1,0 +1,153 @@
+/* ===============================
+   MODAL BACKDROP
+=============================== */
+
+.auction-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    width: 300px;
+    padding: 18px;
+  
+    background: linear-gradient(180deg, #1a1035, #0c0818);
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+  
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.9),
+      inset 0 0 20px rgba(255, 255, 255, 0.05);
+  
+    z-index: 999;
+    text-align: center;
+    color: #f5e6c8;
+  }
+  
+  /* ===============================
+     TITLE
+  =============================== */
+  
+  .auction-modal h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #ffd700;
+  }
+  
+  /* ===============================
+     TEXT
+  =============================== */
+  
+  .auction-modal p {
+    margin: 6px 0;
+    font-size: 13px;
+  }
+  
+  /* ===============================
+     COST / BID
+  =============================== */
+  
+  .base-cost {
+    color: #7cffc4;
+    font-weight: bold;
+  }
+  
+  .highest-bid {
+    color: #ff7c7c;
+    font-weight: bold;
+  }
+  
+  .current-bid {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  /* ===============================
+     BID BUTTON GROUP
+  =============================== */
+  
+  .bid-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    gap: 6px;
+  }
+  
+  .bid-buttons button {
+    flex: 1;
+  
+    background: linear-gradient(180deg, #7c5cff, #3a2db8);
+    border: none;
+    border-radius: 6px;
+  
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+  
+    padding: 6px;
+    cursor: pointer;
+  
+    transition: all 0.2s ease;
+  }
+  
+  .bid-buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(124, 92, 255, 0.6);
+  }
+  
+  .bid-buttons button:disabled {
+    background: #444;
+    cursor: not-allowed;
+  }
+  
+  /* ===============================
+     PLACE BID BUTTON
+  =============================== */
+  
+  .bid-btn {
+    width: 100%;
+    padding: 8px;
+  
+    background: linear-gradient(180deg, #ffd700, #a57a24);
+    border: none;
+    border-radius: 8px;
+  
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+  
+    transition: all 0.2s ease;
+  }
+  
+  .bid-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(255, 215, 0, 0.5);
+  }
+  
+  .bid-btn:disabled {
+    background: #555;
+    color: #222;
+    cursor: not-allowed;
+  }
+  
+  /* ===============================
+     ERROR MESSAGE
+  =============================== */
+  
+  .auction-error {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #ff4d4d;
+  }
+  
+  /* ===============================
+     OPTIONAL: LEADER HIGHLIGHT
+  =============================== */
+  
+  .auction-leader {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #7cffc4;
+  }

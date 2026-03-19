@@ -1,0 +1,197 @@
+ /* Root */
+.lobby-root {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1b1f2e, #0a0c12 70%);
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  text-align: center;
+  color: #eaeaf0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Title */
+.lobby-title {
+  margin-top: 30px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* Players container */
+.players-box {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Player card */
+.player-card {
+  width: 340px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: linear-gradient(145deg, #1a1d28, #13161f);
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.02);
+
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.7),
+    0 0 10px rgba(52, 152, 219, 0.15);
+}
+
+/* Left side (avatar + name) */
+.player-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Avatar */
+.player-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3498db, #8e44ad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Player name */
+.player-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Host badge */
+.host-badge {
+  font-size: 11px;
+  color: #ffd700;
+  margin-left: 6px;
+}
+
+/* Status */
+.player-status {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Ready glow effect */
+.status-ready {
+  color: #00ff88;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+}
+
+/* Not ready */
+.status-notready {
+  color: #ff4d4d;
+}
+
+/* Ready pulse animation */
+@keyframes pulseReady {
+  0% { box-shadow: 0 0 0 rgba(0,255,136,0.4); }
+  50% { box-shadow: 0 0 12px rgba(0,255,136,0.7); }
+  100% { box-shadow: 0 0 0 rgba(0,255,136,0.4); }
+}
+
+.player-card.ready {
+  animation: pulseReady 2s infinite;
+}
+
+/* Buttons container */
+.lobby-actions {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Base button */
+.ready-btn,
+.start-btn {
+  padding: 12px 28px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+/* Shine effect */
+.ready-btn::before,
+.start-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transition: all 0.5s;
+}
+
+.ready-btn:hover::before,
+.start-btn:hover::before {
+  left: 100%;
+}
+
+/* Ready button */
+.ready-btn {
+  background: linear-gradient(135deg, #3498db, #2c7be5);
+  color: white;
+}
+
+.ready-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+}
+
+/* Start button */
+.start-btn {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.5);
+}
+
+/* Click feel */
+.ready-btn:active,
+.start-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  .player-card {
+    width: 90%;
+  }
+}

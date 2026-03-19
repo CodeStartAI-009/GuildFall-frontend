@@ -1,0 +1,171 @@
+/* ============================= */
+/* Base Container */
+/* ============================= */
+
+.splash-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, #1a1f3a 0%, #0b1020 65%, #060912 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============================= */
+/* Magic Circle System */
+/* ============================= */
+
+.magic-circle-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  max-width: 85vw;
+  max-height: 85vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============================= */
+/* Outer Circle */
+/* ============================= */
+
+.outer-circle {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border: 1.8px solid rgba(124, 92, 255, 0.35);
+  border-radius: 50%;
+  box-shadow:
+    0 0 35px rgba(124, 92, 255, 0.35),
+    inset 0 0 25px rgba(124, 92, 255, 0.25);
+  animation: rotateOuter 45s linear infinite;
+}
+
+/* ============================= */
+/* SVG Spell Ring */
+/* ============================= */
+
+.spell-svg {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  animation: rotateSpell 65s linear infinite;
+  pointer-events: none;
+}
+
+.spell-text {
+  fill: rgba(124, 92, 255, 0.9);
+  font-size: 26px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(124, 92, 255, 0.8);
+}
+
+/* ============================= */
+/* Inner Circle */
+/* ============================= */
+
+.inner-circle {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  border: 1.8px solid rgba(194, 161, 54, 0.355);
+  border-radius: 50%;
+  box-shadow:
+    0 0 25px rgba(212, 175, 55, 0.45),
+    inset 0 0 25px rgba(124, 92, 255, 0.25);
+  animation: pulseInner 4s ease-in-out infinite;
+}
+
+/* ============================= */
+/* Logo */
+/* ============================= */
+
+.logo-container {
+  position: relative;
+  z-index: 5;
+}
+
+.main-logo {
+  width: 340px;
+  max-width: 65vw;
+  filter: drop-shadow(0 0 25px rgba(124, 92, 255, 0.6));
+  animation: logoFade 1.8s ease forwards;
+}
+
+@keyframes logoFade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================= */
+/* Animations */
+/* ============================= */
+
+@keyframes rotateOuter {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rotateSpell {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes pulseInner {
+  0%,100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 20px rgba(212,175,55,0.35),
+      inset 0 0 20px rgba(124,92,255,0.25);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow:
+      0 0 45px rgba(212,175,55,0.65),
+      inset 0 0 35px rgba(124,92,255,0.35);
+  }
+}
+
+/* ============================= */
+/* Loading Section */
+/* ============================= */
+
+.loading-section {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.shield-wrapper {
+  
+  width: 300px;
+}
+
+.shield-img {
+  width: 90%;
+  display: block;
+}
+
+ 
+@keyframes pulseEnergy {
+  0%,100% { opacity: 0.25; transform: scale(0.95); }
+  50%     { opacity: 0.85; transform: scale(1.08); }
+}
+
+/* ============================= */
+/* Company Logo */
+/* ============================= */
+
+.company-logo {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  height: 70px;
+  opacity: 0.6;
+}

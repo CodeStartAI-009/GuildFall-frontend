@@ -1,0 +1,64 @@
+.details-box{
+
+    width:260px;
+    
+    background:linear-gradient(180deg,#1a1035,#0c0818);
+    
+    border:2px solid gold;
+    
+    border-radius:12px;
+    
+    padding:14px;
+    
+    color:white;
+    
+    box-shadow:0 10px 25px rgba(0,0,0,0.6);
+    
+    margin-top:15px;
+    
+    }
+    
+    .details-box h2{
+    font-size:18px;
+    margin-bottom:4px;
+    }
+    
+    .details-box h4{
+    color:#d4af37;
+    margin-bottom:10px;
+    }
+    
+    .details-table{
+    
+    width:100%;
+    
+    border-collapse:collapse;
+    
+    font-size:12px;
+    
+    }
+    
+    .details-table th{
+    
+    color:#d4af37;
+    
+    text-align:left;
+    
+    border-bottom:1px solid gold;
+    
+    padding:4px;
+    
+    }
+    
+    .details-table td{
+    
+    padding:4px;
+    
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    
+    }
+    .details-owner {
+        margin: 8px 0;
+        font-weight: bold;
+        color: #ffd700;
+      }

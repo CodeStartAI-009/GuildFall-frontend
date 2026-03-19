@@ -1,0 +1,104 @@
+ /* 🔥 CHAT ICON */
+.chat-icon {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    background: #7c5cff;
+    color: white;
+    font-size: 22px;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+  
+  /* 🔴 UNREAD BADGE */
+  .chat-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+  }
+  
+  /* 🔥 CHAT BOX */
+  .chat-container {
+    position: absolute;
+    right: 10px;
+    bottom: 70px;
+    width: 260px;
+    height: 320px;
+    background: #1a1035;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* HEADER */
+  .chat-header {
+    padding: 6px;
+    background: #2a1b55;
+    color: #ffd700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* CLOSE BUTTON */
+  .chat-close {
+    cursor: pointer;
+  }
+  
+  /* MESSAGES */
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  /* MESSAGE */
+  .chat-message {
+    margin-bottom: 6px;
+  }
+  
+  .chat-message.me {
+    text-align: right;
+  }
+  
+  /* USER */
+  .chat-user {
+    font-weight: bold;
+    color: #ffd700;
+    margin-right: 4px;
+  }
+  
+  /* TEXT */
+  .chat-text {
+    color: #fff;
+  }
+  
+  /* INPUT */
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #444;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    border: none;
+    padding: 6px;
+    outline: none;
+  }
+  
+  .chat-input button {
+    background: #7c5cff;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
