@@ -88,7 +88,7 @@ export default function Home() {
     }
   };
 
-  if (!user) return null;
+  if (!user) return <div style={{ color: "white" }}>Loading...</div>;
 
   /* ===============================
      CREATE ROOM

@@ -29,7 +29,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/lobby/:roomId" element={<Lobby />} />
      <Route path="/game/:roomId" element={<Game />} />
-     <Route path="/:type" element={<InfoPage />} />  
+     <Route path="/:type(features|faq|terms|privacy)" element={<InfoPage />} />
     </Routes>
   );
 }
